@@ -51,7 +51,7 @@ installkernel() {
             instmods "$modname"
         done
     else
-        dracut_instmods -o -s "drm_crtc_init|drm_dev_register|drm_encoder_init" "=drivers/gpu/drm" "=drivers/staging"
+        dracut_instmods -o -s "drm_crtc_init|drm_dev_register|drm_encoder_init" "=drivers/gpu/drm" "=drivers/staging" "=ubuntu"
         # also include privacy screen providers (see above comment)
         # atm all providers live under drivers/platform/x86
         dracut_instmods -o -s "drm_privacy_screen_register" "=drivers/platform/x86"
