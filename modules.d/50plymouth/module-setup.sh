@@ -7,7 +7,7 @@ pkglib_dir() {
         _arch=$(dpkg-architecture -qDEB_HOST_MULTIARCH 2> /dev/null)
         [ -n "$_arch" ] && _dirs+=" /usr/lib/$_arch/plymouth"
     fi
-    for _dir in $_dirs; do
+    for _dir in $_dirs /usr/lib/*/plymouth; do
         if [ -x "$dracutsysrootdir""$_dir"/plymouth-populate-initrd ]; then
             echo "$_dir"
             return
