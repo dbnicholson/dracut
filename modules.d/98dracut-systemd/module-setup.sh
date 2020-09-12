@@ -35,7 +35,7 @@ install() {
     inst_script "$moddir/dracut-mount.sh" /bin/dracut-mount
     inst_script "$moddir/dracut-pre-pivot.sh" /bin/dracut-pre-pivot
 
-    inst_script "$moddir/rootfs-generator.sh" "$systemdutildir"/system-generators/dracut-rootfs-generator
+    #inst_script "$moddir/rootfs-generator.sh" "$systemdutildir"/system-generators/dracut-rootfs-generator
 
     for i in \
         dracut-cmdline.service \
