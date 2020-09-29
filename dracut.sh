@@ -2354,15 +2354,6 @@ if [[ $hostonly_cmdline == "yes" ]]; then
 fi
 
 if [[ $kernel_only != yes ]]; then
-    # libpthread workaround: pthread_cancel wants to dlopen libgcc_s.so
-    for _dir in $libdirs; do
-        for _f in "$dracutsysrootdir$_dir/libpthread.so"*; do
-            [[ -e $_f ]] || continue
-            inst_libdir_file "libgcc_s.so*"
-            break 2
-        done
-    done
-
     # FIPS workaround for Fedora/RHEL: libcrypto needs libssl when FIPS is enabled
     if [[ $DRACUT_FIPS_MODE ]]; then
         for _dir in $libdirs; do
