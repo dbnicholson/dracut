@@ -19,8 +19,15 @@ install() {
     _busybox=$(find_binary busybox)
     inst "$_busybox" /usr/bin/busybox
     for _i in $($_busybox --list); do
-        [[ ${_i} == busybox ]] && continue
-        _progs+=("${_i}")
+        case "${_i}" in
+            # Don't symlink busybox to itself.
+            busybox) ;;
+            # Some busybox implementations are not good enough replacements.
+            blkid) ;;
+            *)
+                _progs+=("${_i}")
+                ;;
+        esac
     done
 
     for _i in "${_progs[@]}"; do
